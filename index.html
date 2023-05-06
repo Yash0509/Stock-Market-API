@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market API</title>
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="data:image/png;base64,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" alt="Logo" width="120" height="34" class="d-inline-block align-text-top">
+            Stock Market API
+          </a>
+        </div>
+      </nav>
+      <br>
+      
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="text1" class="col-form-label">Enter Stock Ticker Here</label>
+        </div>
+        <div class="col-auto">
+          <input id="text1" class="form-control" aria-describedby="passwordHelpInline" placeholder="Write Ticker like AAPL">
+          </div>
+        <div class="col-auto">
+          <span id="passwordHelpInline" class="form-text">
+            Must be Case Sensitive
+          </span>
+        </div>
+      </div>
+      <br>
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="text2" class="col-form-label">Enter Start Date Here</label>
+          </div>
+          <div class="col-auto">
+            <input id="text2" class="form-control" aria-describedby="passwordHelpInline" placeholder="Write in YYYY-MM-DD">
+            </div>
+          <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+              Must be Case Sensitive
+            </span>
+          </div>
+      </div>
+      <br>
+      <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="text3" class="col-form-label">Enter End Date Here</label>
+          </div>
+          <div class="col-auto">
+            <input id="text3" class="form-control" aria-describedby="passwordHelpInline" placeholder="Write in YYYY-MM-DD">
+            </div>
+          <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+              Must be Case Sensitive
+            </span>
+          </div>
+      </div>
+    <br>
+    <button onclick="fn1()" id="btn1" type="button" class="btn btn-primary">Click Here</button>
+
+
+    <div id="chartDiv" style="width:50%; height:300px; margin:0 auto;"></div>
+
+
+</body>
+<script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+<script src="script.js"></script>
+</html>
